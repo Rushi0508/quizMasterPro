@@ -13,7 +13,7 @@ const CustomTextInput = ({ style, font = 'regular', ...props }: CustomTextInputP
 
     return (
         <TextInput
-            style={[{ fontFamily }, style]}
+            style={[{ fontFamily, height: 40, justifyContent: "center" }, style]}
             {...props}
         />
     );

@@ -1,14 +1,25 @@
-import { View } from "react-native";
-import React from "react";
-import { Text } from "react-native-paper";
-import CustomText from "./components/CustomText";
+import React from 'react';
+import StackNavigator from './StackNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNavigationContainerRef } from '@react-navigation/core';
+import { AuthProvider } from './hooks/useAuth';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const App = () => {
+export const navigationRef = createNavigationContainerRef();
+
+function App(): JSX.Element {
   return (
-    <View>
-      <CustomText variant="displayLarge" >App</CustomText>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer ref={navigationRef}>
+        <AuthProvider>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <StackNavigator />
+          </GestureHandlerRootView>
+        </AuthProvider>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
-};
+}
 
 export default App;
