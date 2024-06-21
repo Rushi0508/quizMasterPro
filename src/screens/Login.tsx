@@ -7,6 +7,7 @@ import CustomText from "../components/CustomText";
 import { generalStyles } from "../styles/general";
 import CustomButton from "../components/CustomButton";
 import useAuth from "../hooks/useAuth";
+import { navigationRef } from "../App";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
@@ -32,12 +33,13 @@ const Login = () => {
         <BGView>
             <View style={loginStyles.container}>
                 <View style={loginStyles.innerContainer}>
-                    <CustomText variant="headlineLarge" font="medium" style={generalStyles.textCenter} >Login</CustomText>
+                    <CustomText variant="headlineLarge" font="medium" style={[generalStyles.textCenter, { marginBottom: 20 }]} >Login</CustomText>
                     <CustomTextInput placeholder="Enter email" mode="outlined" onChangeText={(text) => handleChange("email", text)} label={"Email"} value={credentials.email} />
                     <CustomTextInput placeholder="Enter password" mode="outlined" onChangeText={(text) => handleChange("password", text)} label={"Password"} secureTextEntry value={credentials.password} />
-                    <CustomButton loading={loading} mode="contained" onPress={handleLogin} >
+                    <CustomButton loading={loading} style={{ marginTop: 12 }} mode="contained" onPress={handleLogin} >
                         Login
                     </CustomButton>
+                    <CustomText style={[generalStyles.textCenter]}>New Here? <CustomText onPress={() => navigationRef.navigate("Register" as never)} font="medium" color={'indigo'}>Register Here</CustomText></CustomText>
                 </View>
             </View>
         </BGView >

@@ -4,6 +4,7 @@ import useAuth from './hooks/useAuth';
 import Quiz from './screens/Quiz';
 import StartQuiz from './screens/StartQuiz';
 import History from './screens/History';
+import Register from './screens/Register';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,10 @@ function StackNavigator() {
                     <Stack.Screen name="History" component={History} />
                 </>
             ) : (
-                <Stack.Screen name="Login" component={Login} />
+                <>
+                    <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="Register" component={Register} />
+                </>
             )}
         </Stack.Navigator>
     );

@@ -13,7 +13,10 @@ const CustomTextInput = ({ style, font = 'regular', ...props }: CustomTextInputP
 
     return (
         <TextInput
-            style={[{ fontFamily, height: 40, justifyContent: "center" }, style]}
+            mode='outlined'
+            outlineStyle={{ borderRadius: 20 }}
+            contentStyle={{ fontFamily, paddingBottom: 4, justifyContent: "center", alignItems: "center", flexDirection: "row" }}
+            style={[{ height: 40, justifyContent: "center" }, style]}
             {...props}
         />
     );

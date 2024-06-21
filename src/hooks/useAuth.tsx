@@ -32,6 +32,17 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
             console.log(error)
         }
     };
+    const register = async (credentials: any) => {
+        try {
+            const data = await AuthAPI.register(credentials);
+            if (data?.data) {
+                await AsyncStorage.setItem('user', JSON.stringify(data.data));
+                setUser(data.data);
+            }
+        } catch (error: any) {
+            console.log(error)
+        }
+    };
 
     const logOut = async () => {
         try {
@@ -45,6 +56,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     const memoedValue = useMemo(
         () => ({
             user,
+            register,
             login,
             logOut
         }),
@@ -58,6 +70,7 @@ const useAuth = () => {
     return useContext(AuthContext) as {
         user: AuthUser | null;
         login: (email: string, pass: string) => Promise<void>;
+        register: (credentials: any) => Promise<void>;
         logOut: () => Promise<void>;
     };
 };
