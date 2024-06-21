@@ -42,7 +42,6 @@ export const errorHandler = <T extends any[], R>(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         // For Development
-        console.log();
         ToastAndroid.show(
           error.response?.data || 'Something went wrong',
           ToastAndroid.SHORT,
