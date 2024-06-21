@@ -79,7 +79,6 @@ const Quiz = ({ route }: any) => {
         }
     }
 
-
     return (
         <BGView>
             <>
@@ -121,8 +120,8 @@ const Quiz = ({ route }: any) => {
                         <CustomButton disabled={currentIndex === 0} onPress={handleBack} mode="outlined" textColor="indigo">Back</CustomButton>
                         {
                             currentIndex === questions?.length! - 1 ?
-                                <CustomButton onPress={handleSubmit} mode='contained' >Submit</CustomButton> :
-                                <CustomButton loading={loading} onPress={handleNext} mode='contained' >Next</CustomButton>
+                                <CustomButton loading={loading} onPress={handleSubmit} mode='contained' >Submit</CustomButton> :
+                                <CustomButton onPress={handleNext} mode='contained' >Next</CustomButton>
                         }
                     </View>
                 </View>

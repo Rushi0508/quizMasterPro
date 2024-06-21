@@ -5,7 +5,7 @@ import CustomText from "./CustomText";
 const DifficultyText = ({ difficulty }: { difficulty: string }) => {
     return (
         <CustomText color={
-            difficulty == "Hard" ? "red" : difficulty == "Medium" ? "yellow" : "green"
+            difficulty == "Hard" ? "red" : difficulty == "Medium" ? "#f6dc10" : "green"
         } font="medium">
             {difficulty}
         </CustomText>
