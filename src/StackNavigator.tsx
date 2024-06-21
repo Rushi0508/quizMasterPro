@@ -5,6 +5,8 @@ import Quiz from './screens/Quiz';
 import StartQuiz from './screens/StartQuiz';
 import History from './screens/History';
 import Register from './screens/Register';
+import Profile from './screens/Profile';
+import MyTabs from './BottomTabsNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,9 +19,8 @@ function StackNavigator() {
         }} >
             {user ? (
                 <>
-                    <Stack.Screen name="StartQuiz" component={StartQuiz} />
+                    <Stack.Screen name="MyTabs" component={MyTabs} />
                     <Stack.Screen name="Quiz" component={Quiz} />
-                    <Stack.Screen name="History" component={History} />
                 </>
             ) : (
                 <>
