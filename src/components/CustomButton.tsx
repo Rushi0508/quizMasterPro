@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { Button, ButtonProps } from "react-native-paper";
 import CustomText from "./CustomText";
@@ -12,7 +11,7 @@ const CustomButton = (props: CustomButtonProps) => {
         <Button {...props}>
             {
                 typeof props.children === "string" ?
-                    <CustomText color="white" font="medium" >
+                    <CustomText color={props.textColor ?? "white"} font="medium" >
                         {props.children}
                     </CustomText>
                     :

@@ -8,12 +8,12 @@ const BGView = ({ children }: { children: React.ReactNode }) => {
         <View
             style={{ flex: 1, backgroundColor: "white" }}
         >
-            <SafeAreaView style={{ marginBottom: 65, flex: 1 }}>
+            <SafeAreaView style={{ flex: 1 }}>
                 <TouchableWithoutFeedback accessible={false} onPress={() => Keyboard.dismiss()}>
                     {children}
                 </TouchableWithoutFeedback>
             </SafeAreaView>
-        </View>
+        </View >
     );
 };
 
