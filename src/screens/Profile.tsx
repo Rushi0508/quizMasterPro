@@ -38,7 +38,7 @@ const Profile = () => {
     return (
         <BGView>
             <View style={{ flex: 1 }}>
-                <Appbar.Header style={{ backgroundColor: "whitesmoke" }} mode="center-aligned">
+                <Appbar.Header mode="center-aligned">
                     <Appbar.Content titleStyle={{ fontFamily: "Poppins-Medium" }} title="Profile" />
                 </Appbar.Header>
                 <View style={{ padding: 20, gap: 10, flex: 1 }}>

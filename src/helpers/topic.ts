@@ -10,4 +10,7 @@ export class TopicAPI {
   static createTopic = errorHandler(async body => {
     return await api.post(`${baseURL}/api/topics`, body);
   });
+  static getById = errorHandler(async topicId => {
+    return await api.get(`${baseURL}/api/topics/${topicId}`);
+  });
 }

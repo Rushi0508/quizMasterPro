@@ -82,7 +82,7 @@ const Quiz = ({ route }: any) => {
     return (
         <BGView>
             <>
-                <Appbar.Header mode='center-aligned' style={{ backgroundColor: "whitesmoke" }} >
+                <Appbar.Header mode='center-aligned' >
                     <Appbar.BackAction onPress={() => navigationRef.navigate("StartQuiz" as never)} />
                     <Appbar.Content titleStyle={{ fontFamily: "Poppins-Medium" }} title={`Quiz - ${route.params.topic}`} />
                 </Appbar.Header>

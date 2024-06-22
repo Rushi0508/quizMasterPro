@@ -8,7 +8,7 @@ interface CustomButtonProps extends ButtonProps {
 
 const CustomButton = (props: CustomButtonProps) => {
     return (
-        <Button style={{ justifyContent: "center", alignItems: "flex-start", flexDirection: "row" }} {...props}>
+        <Button {...props}>
             {
                 typeof props.children === "string" ?
                     <CustomText color={props.textColor ?? "white"} font="medium" >

@@ -52,6 +52,10 @@ const StartQuiz = () => {
                     }
                     quizData.push({ question, options });
                 }
+                setCurrentTab(0)
+                setSelectedTopic(null);
+                setSelectedDifficulty(null);
+                setTotalQuestions(null);
                 //@ts-ignore
                 navigationRef.navigate("Quiz", { quizId: res.data.id, quizData: quizData, topic: selectedTopic.name, difficulty: selectedDifficulty, totalQuestions: totalQuestions });
             }
@@ -136,7 +140,7 @@ const StartQuiz = () => {
                         <CustomText onPress={() => setTopicModal(true)} font="medium" style={[generalStyles.textCenter, { textDecorationLine: "underline", marginVertical: 20 }]} >Create a new topic</CustomText>
                     </View>}
                     {
-                        currentTab == 1 && <View>
+                        currentTab == 1 && <View style={{ gap: 10 }}>
                             <CustomText font="medium" style={[generalStyles.textCenter, { fontSize: 22, marginVertical: 20 }]} >Select difficulty</CustomText>
                             <BouncyCheckbox
                                 fillColor={"#29AB87"}

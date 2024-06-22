@@ -9,4 +9,10 @@ export class QuizAPI {
   static submitQuiz = errorHandler(async (quizId, body) => {
     return await api.put(`${baseURL}/api/quizzes/${quizId}`, body);
   });
+  static getUserQuizzes = errorHandler(async userId => {
+    return await api.get(`${baseURL}/api/quizzes/user/${userId}`);
+  });
+  static deleteQuiz = errorHandler(async quizId => {
+    return await api.delete(`${baseURL}/api/quizzes/${quizId}`);
+  });
 }

@@ -28,7 +28,7 @@ function MyTabs() {
                 tabBarStyle: {
                     backgroundColor: MD3Colors.neutralVariant95,
                     height: 55,
-                    paddingVertical: 4
+                    paddingVertical: 4,
                 },
                 headerShown: false,
                 tabBarIcon: ({ focused, color }) => {
@@ -45,7 +45,6 @@ function MyTabs() {
                         </View>
                     );
                 },
-                // tabBarShowLabel: false,
                 tabBarLabelStyle: {
                     fontFamily: "Poppins-Regular"
                 },

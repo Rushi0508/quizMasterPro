@@ -2,10 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import useAuth from './hooks/useAuth';
 import Quiz from './screens/Quiz';
-import StartQuiz from './screens/StartQuiz';
-import History from './screens/History';
 import Register from './screens/Register';
-import Profile from './screens/Profile';
 import MyTabs from './BottomTabsNavigator';
 
 const Stack = createNativeStackNavigator();
