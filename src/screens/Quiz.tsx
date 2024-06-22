@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { FlatList, Animated, View } from 'react-native';
+import { FlatList, Animated, View, ToastAndroid } from 'react-native';
 import BGView from '../components/BGView';
 import QuizItem from '../components/QuizItem';
 import { Appbar, Button, Modal, Portal, ProgressBar, Text } from 'react-native-paper';
@@ -14,7 +14,22 @@ const Quiz = ({ route }: any) => {
     const [visible, setVisible] = React.useState(false);
     const [questions, setQuestions] = useState<{ question: string, options: [] }[] | null>(route.params.quizData);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [selectedOptions, setSelectedOptions] = useState<number[]>(Array(route.params.quizData.length).fill(-1));
+    const isCompleted = route.params.completed;
+    let answers = null;
+    if (route.params.answers) {
+        answers = route.params.answers;
+    }
+    let initialSelectedOptions;
+    if (!route.params.completed) {
+        initialSelectedOptions = Array(route.params.quizData.length).fill(-1)
+    } else {
+        console.log(route.params.userResponses)
+        initialSelectedOptions = route.params.userResponses.map((response: string) => {
+            const decrementedValue = parseInt(response);
+            return decrementedValue;
+        });
+    }
+    const [selectedOptions, setSelectedOptions] = useState<number[]>(initialSelectedOptions);
     const flatListRef = useRef<FlatList>(null);
     const [loading, setLoading] = useState(false);
     const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -64,6 +79,9 @@ const Quiz = ({ route }: any) => {
     const handleSubmit = async () => {
         try {
             setLoading(true);
+            if (isCompleted) {
+                return ToastAndroid.show("Quiz already submitted", ToastAndroid.SHORT);
+            }
             const res = await QuizAPI.submitQuiz(route.params.quizId, {
                 userId: user?.id,
                 userResponses: selectedOptions,
@@ -83,7 +101,7 @@ const Quiz = ({ route }: any) => {
         <BGView>
             <>
                 <Appbar.Header mode='center-aligned' >
-                    <Appbar.BackAction onPress={() => navigationRef.navigate("StartQuiz" as never)} />
+                    <Appbar.BackAction onPress={() => navigationRef.goBack()} />
                     <Appbar.Content titleStyle={{ fontFamily: "Poppins-Medium" }} title={`Quiz - ${route.params.topic}`} />
                 </Appbar.Header>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", paddingVertical: 10, paddingHorizontal: 20 }} >
@@ -98,6 +116,8 @@ const Quiz = ({ route }: any) => {
                         data={questions}
                         renderItem={({ item, index }) => (
                             <QuizItem
+                                isCompleted={isCompleted}
+                                answers={answers}
                                 questionIndex={index}
                                 selectedOptionIndex={selectedOptions[index]}
                                 onSelectOption={(optionIndex: number) => handleSelectOption(index, optionIndex)}

@@ -1,16 +1,18 @@
 import { View, Text } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CustomButton from "../components/CustomButton";
 import useAuth from "../hooks/useAuth";
 import { AuthAPI } from "../helpers/auth";
 import BGView from "../components/BGView";
 import { Appbar } from "react-native-paper";
 import CustomText from "../components/CustomText";
+import { useFocusEffect } from "@react-navigation/native";
 
 const Profile = () => {
     const { logOut, user } = useAuth();
     const [loading, setLoading] = useState(false);
     const [userData, setUserData] = useState<any>(null);
+
     const handleDelete = async () => {
         try {
             setLoading(true);
@@ -32,9 +34,11 @@ const Profile = () => {
         }
     }
 
-    useEffect(() => {
-        fetchUser();
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            fetchUser();
+        }, [])
+    )
     return (
         <BGView>
             <View style={{ flex: 1 }}>

@@ -92,7 +92,7 @@ const StartQuiz = () => {
         <BGView>
             <View style={{ flex: 1 }}>
                 <CustomText style={[generalStyles.textCenter, { marginTop: 50, marginBottom: 30 }]} variant="headlineMedium" font="semibold" >Start a Quiz</CustomText>
-                <View style={{ backgroundColor: MD3Colors.neutralVariant90, borderRadius: 50 }}>
+                <View style={{ backgroundColor: MD3Colors.neutralVariant90, borderRadius: 50, marginHorizontal: 10 }}>
                     <CustomTabs
                         tabNames={["Topic", "Difficulty", "Questions"]}
                         activeTab={currentTab}
