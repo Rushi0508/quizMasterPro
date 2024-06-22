@@ -14,9 +14,12 @@ QuizMasterPro is a mobile application that allows users to give quizzes on vario
 
 ## Technologies Used
 
+### Frontend
 - Typescript
 - React Native
 - React Native Paper
+  
+### Backend
 - Java
 - Spring Boot
 - MongoDB
