@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ToastAndroid } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import CustomButton from "../components/CustomButton";
 import useAuth from "../hooks/useAuth";
@@ -29,6 +29,10 @@ const Profile = () => {
 
     const fetchUser = async () => {
         const res = await AuthAPI.getUser(user?.id);
+        if (res.hasOwnProperty("auth") && !res.auth) {
+            ToastAndroid.show("Session Expired. Login again", ToastAndroid.SHORT);
+            logOut();
+        }
         if (res) {
             setUserData(res?.data);
         }

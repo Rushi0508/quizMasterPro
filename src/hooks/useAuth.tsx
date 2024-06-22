@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Config from 'react-native-config';
 import { AuthUser } from '../types/AuthUser';
 import { AuthAPI } from '../helpers/auth';
+import SplashScreen from 'react-native-splash-screen';
 
 const AuthContext = createContext({});
 
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         if (user) {
             setUser(await JSON.parse(user));
         }
+        SplashScreen.hide();
     };
     const login = async (email: string, password: string) => {
         try {

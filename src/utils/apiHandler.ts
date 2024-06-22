@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {ToastAndroid} from 'react-native';
+import {navigationRef} from '../App';
 
 /**
  * Error handler for async API functions
@@ -20,11 +21,10 @@ interface ErrorHandlerConfig {
 
 export const errorHandler = <T extends any[], R>(
   func: (...args: T) => Promise<R>,
-): ((...args: [...T, ErrorHandlerConfig?]) => Promise<R | undefined>) => {
+): ((...args: [...T, ErrorHandlerConfig?]) => Promise<R | undefined | any>) => {
   return async (...args: [...T, ErrorHandlerConfig?]) => {
     let config: ErrorHandlerConfig = {showToast: true};
     let actualArgs: T;
-
     const lastArg = args[args.length - 1];
     if (
       typeof lastArg === 'object' &&
@@ -42,6 +42,9 @@ export const errorHandler = <T extends any[], R>(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         // For Development
+        if (error.response?.status == 401 || error.response?.status == 403) {
+          return {auth: false};
+        }
         ToastAndroid.show(
           error.response?.data || 'Something went wrong',
           ToastAndroid.SHORT,
