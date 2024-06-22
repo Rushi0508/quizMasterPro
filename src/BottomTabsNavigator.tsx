@@ -30,6 +30,7 @@ function MyTabs() {
                     height: 55,
                     paddingVertical: 4
                 },
+                headerShown: false,
                 tabBarIcon: ({ focused, color }) => {
                     let iconName = routes.find(item => item.name == route.name)?.icon;
                     return (
