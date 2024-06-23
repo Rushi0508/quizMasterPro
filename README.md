@@ -2,6 +2,8 @@
 
 QuizMasterPro is a mobile application that allows users to give quizzes on various topics. The application leverages Gemini's API to generate quiz questions, options, and answers based on user inputs. It also provides functionalities to register, login, and track user performance.
 
+### Watch the demo video at [Drive](https://drive.google.com/file/d/1OpAXqE7R1RS_IL_kVpWYWAppY9wgMkQE/view?usp=sharing) | [Youtube](https://youtu.be/5rxqHC4rcf4)
+
 ## Features
 
 - User Registration and Authentication
